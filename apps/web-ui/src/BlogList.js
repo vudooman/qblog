@@ -37,6 +37,9 @@ class BlogList extends Component {
   	  	    comments,
   	  	    newComment: ''
   	  	  });
+  	  	  
+  	  	  // Do this to get comments added by other users.
+  	  	  this.onViewComments(blogId, true);
   	    }, async err =>  {
           this.setState({
             modalError: 'Could not add comment for unknown reason.  Try again later.'
@@ -45,10 +48,10 @@ class BlogList extends Component {
   	}
   }
   
-  onViewComments(blogId) {
+  onViewComments(blogId, force) {
 
   	let collapse = !this.state.collapse;
-  	if(blogId !== this.state.commentBlogId) {
+  	if(blogId !== this.state.commentBlogId || force === true) {
   		collapse = false;
   
 	    this.props.apiHandler('api/blogs/' + blogId+ '/comments', {
@@ -57,12 +60,17 @@ class BlogList extends Component {
 	    .then(async response => {
 	
 	        const comments = await response.json();
-	        
-		  	this.setState({
-		  	  commentBlogId: blogId,
-		  	  collapse: collapse,
-		  	  comments: comments
-		  	})
+	        if(force && blogId === this.state.commentBlogId) {
+	          this.setState({
+	            comments
+	          });
+	        } else {
+		  	  this.setState({
+		  	    commentBlogId: blogId,
+		  	    collapse: collapse,
+		  	    comments: comments
+		  	  })
+	        }
 	    }, async err =>  {
           this.setState({
             modalError: 'Could not load comments for unknown reason.  Try again later.'

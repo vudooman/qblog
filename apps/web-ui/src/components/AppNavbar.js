@@ -74,8 +74,8 @@ class AppNavBar extends Component {
   	    .then(() => {
   	  	  this.toggleCreateSpace();
   	    }, async err =>  {
-  	      if(err.status === 400) {
-  	        const json = await err.json();
+  	        if(err.response.status === 400) {
+  	        const json = await err.response.json();
   	        let modalError = null;
   	        if(json.failureMessage === 'BLOG_SPACE_TITLE_NOT_UNIQUE') {
   	          modalError = 'Blog space name is already in use.';
@@ -108,9 +108,15 @@ class AppNavBar extends Component {
 			this.toggleSignup();
 			this.doLogin(null, true);
 		  }, async err =>  {
-		    this.setState({
-			  modalError: 'Could not create account for unknown reason.  Try again later.'
-		    });
+		    let modalError = null;
+  	        if(err.response.status === 400) {
+  	          modalError = 'Username is already in use.';
+  	        } else {
+  	          modalError = 'Could not create account for unknown reason.  Try again later.1';
+  	        }
+  	        this.setState({
+  	          modalError
+  	        });
 		  });
 		} else {
 		  this.setState({
