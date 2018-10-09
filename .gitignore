@@ -1,0 +1,6 @@
+.settings
+.classpath
+.project
+target
+apps/web-ui/node_modules/
+src/main/resources/public/
