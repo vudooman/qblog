@@ -4,3 +4,4 @@
 target
 apps/web-ui/node_modules/
 src/main/resources/public/
+/bin/
