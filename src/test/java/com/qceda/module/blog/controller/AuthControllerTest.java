@@ -66,7 +66,7 @@ public class AuthControllerTest {
 	@Test
 	public void testCreateAccount() throws Exception {
 
-		String dbUri = AppProps.getInstance().getProperty(AppProps.NEO4J_URI);
+		String dbUri = AppProps.getInstance().getProperty(AppProps.DB_URI);
 		if (dbUri.indexOf("file://") == 0) {
 			Gson gson = new Gson();
 

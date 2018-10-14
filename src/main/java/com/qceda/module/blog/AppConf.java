@@ -49,8 +49,8 @@ public class AppConf {
 	 */
 	@Bean
 	public org.neo4j.ogm.config.Configuration configuration() {
-		String uri = AppProps.getInstance().getProperty(AppProps.NEO4J_URI);
-		if (uri.startsWith("file://") && "true".equals(AppProps.getInstance().getProperty(AppProps.NEO4J_CLEAN))) {
+		String uri = AppProps.getInstance().getProperty(AppProps.DB_URI);
+		if (uri.startsWith("file://") && "true".equals(AppProps.getInstance().getProperty(AppProps.DB_CLEAN))) {
 			String noProtocol = uri.substring(7);
 			File file = new File(noProtocol);
 			if (file.exists()) {

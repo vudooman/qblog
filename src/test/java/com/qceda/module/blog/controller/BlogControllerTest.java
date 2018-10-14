@@ -114,7 +114,7 @@ public class BlogControllerTest {
 	@Test
 	public void testCreateSpace() throws Exception {
 
-		String dbUri = AppProps.getInstance().getProperty(AppProps.NEO4J_URI);
+		String dbUri = AppProps.getInstance().getProperty(AppProps.DB_URI);
 		if (dbUri.indexOf("file://") == 0) {
 
 			Gson gson = new Gson();
@@ -142,7 +142,7 @@ public class BlogControllerTest {
 	@Test
 	public void testCreateBlog() throws Exception {
 
-		String dbUri = AppProps.getInstance().getProperty(AppProps.NEO4J_URI);
+		String dbUri = AppProps.getInstance().getProperty(AppProps.DB_URI);
 		if (dbUri.indexOf("file://") == 0) {
 
 			Assert.assertTrue(this.createdSpace != null);

@@ -41,9 +41,9 @@ public class AppPropsTest {
 		String uri = "bolt://neo4j:testpw@localhost:7687";
 
 		Properties sysProps = new Properties();
-		sysProps.setProperty(NEO4J_URI, uri);
+		sysProps.setProperty(DB_URI, uri);
 
 		AppProps props = new AppProps(sysProps);
-		Assert.assertTrue(props.getProperty(NEO4J_URI).equals(uri));
+		Assert.assertTrue(props.getProperty(DB_URI).equals(uri));
 	}
 }

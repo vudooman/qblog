@@ -22,8 +22,8 @@ public class AppProps {
 
 	private static Logger logger = LoggerFactory.getLogger(AppProps.class);
 
-	public static final String NEO4J_URI = "neo4j.URI";
-	public static final String NEO4J_CLEAN = "neo4j.clean";
+	public static final String DB_URI = "db.URI";
+	public static final String DB_CLEAN = "db.clean";
 	public static final String JWT_SECRET = "jwt.secret";
 	public static final String TOKEN_TTL = "token.ttl";
 
@@ -63,8 +63,8 @@ public class AppProps {
 		}
 
 		// Individual prop from startup
-		this.setPropFromSystem(systemProps, props, NEO4J_URI);
-		this.setPropFromSystem(systemProps, props, NEO4J_CLEAN);
+		this.setPropFromSystem(systemProps, props, DB_URI);
+		this.setPropFromSystem(systemProps, props, DB_CLEAN);
 		this.setPropFromSystem(systemProps, props, JWT_SECRET);
 		this.setPropFromSystem(systemProps, props, TOKEN_TTL);
 	}
