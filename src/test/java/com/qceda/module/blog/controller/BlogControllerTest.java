@@ -46,8 +46,6 @@ public class BlogControllerTest {
 
 	private UserData authUserData;
 
-	private Long createSpaceId;
-
 	private BlogSpace createdSpace;
 
 	@Before
